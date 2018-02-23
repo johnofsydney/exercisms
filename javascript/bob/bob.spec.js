@@ -73,52 +73,52 @@ describe('Bob', function () {
     expect(result).toEqual('Whoa, chill out!');
   });
 
-  xit('statement containing question mark', function () {
+  it('statement containing question mark', function () {
     var result = bob.hey('Ending with a ? means a question.');
     expect(result).toEqual('Whatever.');
   });
 
-  xit('prattling on', function () {
+  it('prattling on', function () {
     var result = bob.hey('Wait! Hang on.  Are you going to be OK?');
     expect(result).toEqual('Sure.');
   });
 
-  xit('silence', function () {
+  it('silence', function () {
     var result = bob.hey('');
     expect(result).toEqual('Fine. Be that way!');
   });
 
-  xit('prolonged silence', function () {
+  it('prolonged silence', function () {
     var result = bob.hey('   ');
     expect(result).toEqual('Fine. Be that way!');
   });
 
-  xit('alternate silence', function () {
+  it('alternate silence', function () {
     var result = bob.hey('\t\t\t\t\t\t\t\t\t\t');
     expect(result).toEqual('Fine. Be that way!');
   });
 
-  xit('multiple line question', function () {
+  it('multiple line question', function () {
     var result = bob.hey('\nDoes this cryogenic chamber make me look fat?\nno');
     expect(result).toEqual('Whatever.');
   });
 
-  xit('starting with whitespace', function () {
+  it('starting with whitespace', function () {
     var result = bob.hey('         hmmmmmmm...');
     expect(result).toEqual('Whatever.');
   });
 
-  xit('ending with whitespace', function () {
+  it('ending with whitespace', function () {
     var result = bob.hey('Okay if like my  spacebar  quite a bit?   ');
     expect(result).toEqual('Sure.');
   });
 
-  xit('other whitespace', function () {
+  it('other whitespace', function () {
     var result = bob.hey('\n\r \t');
     expect(result).toEqual('Fine. Be that way!');
   });
 
-  xit('non-question ending with whitespace', function () {
+  it('non-question ending with whitespace', function () {
     var result = bob.hey('This is a statement ending with whitespace      ');
     expect(result).toEqual('Whatever.');
   });
