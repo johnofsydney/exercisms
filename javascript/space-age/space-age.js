@@ -27,7 +27,7 @@
 //
 // module.exports=SpaceAge;
 
-
+// notes //
 function SpaceAge(seconds) {
   this.seconds = seconds
   let earthSecondsPerYear = 31557600
