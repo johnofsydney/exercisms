@@ -48,41 +48,21 @@ function SpaceAge(seconds) {
   //   return +(this.seconds / earthSecondsPerYear / planetTimeScale[planet] ).toFixed(2)
   // }
 
-  // This worked fine ////
-  planets = Object.keys(planetTimeScale)
-  planets.forEach( function (planet) {
-    SpaceAge.prototype["on" + planet] = function () {
-      return +(this.seconds / earthSecondsPerYear / planetTimeScale[planet] ).toFixed(2)
-    }
-  })
-
-  // // This no work ////
+  // // This worked fine ////
   // planets = Object.keys(planetTimeScale)
   // planets.forEach( function (planet) {
-  //   this["on" + planet] = function () {
+  //   SpaceAge.prototype["on" + planet] = function () {
   //     return +(this.seconds / earthSecondsPerYear / planetTimeScale[planet] ).toFixed(2)
   //   }
   // })
 
-
-
-
-  // this.onEarth = function () {
-  //   return +(this.seconds / earthSecondsPerYear).toFixed(2)
-  // }
-  //
-  // this.onMercury = () => {
-  //   return +((this.seconds / earthSecondsPerYear)/.2408467).toFixed(2)
-  // }
-  //
-  // this.onVenus = () => {
-  //   return +((this.seconds / earthSecondsPerYear)/0.61519726).toFixed(2)
-  // }
-  //
-  // let planet = "Mars"
-  // this["on" + planet] = function () {
-  //   return +(this.seconds / earthSecondsPerYear / planetTimeScale[planet] ).toFixed(2)
-  // }
+  // This no work ////
+  planets = Object.keys(planetTimeScale)
+  planets.forEach( function (planet) {
+    this["on" + planet] = function () {
+      return +(this.seconds / earthSecondsPerYear / planetTimeScale[planet] ).toFixed(2)
+    }
+  }.bind(this)) // Bind to the rescue (or you could use a fat arrow)
 
 }
 
