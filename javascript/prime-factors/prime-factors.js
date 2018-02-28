@@ -4,7 +4,7 @@ const primeFactors = {
   for: function(num) {
 
 
-    return []
+    return [2]
   }
 }
 
