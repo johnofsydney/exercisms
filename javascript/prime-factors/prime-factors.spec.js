@@ -13,7 +13,7 @@ describe('primeFactors', function () {
     expect(primeFactors.for(3)).toEqual([3]);
   });
 
-  xit('factors 4', function () {
+  it('factors 4', function () {
     expect(primeFactors.for(4)).toEqual([2, 2]);
   });
 
