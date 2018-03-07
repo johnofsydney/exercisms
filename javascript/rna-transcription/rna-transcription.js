@@ -1,34 +1,33 @@
 var DnaTranscriber = function () {
-  
+
 }
 
 
 DnaTranscriber.prototype.toRna = function (input) {
 
   const swapper = function (letter) {
-    switch(letter) {
+    switch (letter) {
       case "G":
-        return "C"
+        return "C";
       case "C":
-        return "G"
+        return "G";
       case "T":
-        return "A"
+        return "A";
       case "A":
-        return "U"
+        return "U";
       default:
-        return "X"
-        break;
+        return "X";
     }
-  }
-  var arr = input.split('')
-  var swappedArr = arr.map(swapper)
+  };
+  var arr = input.split('');
+  var swappedArr = arr.map(swapper);
   var output = swappedArr.join('');
 
   if (output.indexOf("X") >= 0) {
-    throw new Error('Invalid input')
+    throw new Error('Invalid input');
   }
 
-  return output
+  return output;
 
 };
 

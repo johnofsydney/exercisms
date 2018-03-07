@@ -5,6 +5,7 @@ class Sieve
     @num = num
   end
 
+  
   def is_prime number_to_test
     prime = true
     rooted_num = Math.sqrt(number_to_test)

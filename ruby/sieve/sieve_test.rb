@@ -8,6 +8,7 @@ class SieveTest < Minitest::Test
     expected = []
     assert_equal expected, Sieve.new(1).primes
   end
+  
 
   def test_find_first_prime
     # skip
