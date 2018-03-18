@@ -1,24 +1,27 @@
 const primeFactors = {
 
 
-  isPrime: function(x) {
+  isPrime: function(num) {
 
-    return true
+    return true;
 
-  }
+  },
 
 
   for: function(num) {
-    results = []
+
+    if (num === 1) { return [] }
+
+    results = [];
     for (var i = 2; i <= num; i++) {
-      if (isPrime(i) ) {
+      if (( num % i === 0 ) && this.isPrime(i) ) {
         results.push(i)
       }
     }
 
-    return results
+    return results;
   }
-}
+};
 
 module.exports = primeFactors;
 
