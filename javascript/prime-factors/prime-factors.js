@@ -14,7 +14,7 @@ const primeFactors = {
 
     results = [];
     for (var i = 2; i <= num; i++) {
-      if (( num % i === 0 ) && this.isPrime(i) ) {
+      if (( num % i === 0 ) && ( this.isPrime(i) )  ) {
         results.push(i)
       }
     }
