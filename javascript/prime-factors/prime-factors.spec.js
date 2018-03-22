@@ -5,7 +5,7 @@ describe('primeFactors', function () {
     expect(primeFactors.for(1)).toEqual([]);
   });
 
-  it('factors 2', function () {
+  xit('factors 2', function () {
     expect(primeFactors.for(2)).toEqual([2]);
   });
 

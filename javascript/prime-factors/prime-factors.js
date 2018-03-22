@@ -3,21 +3,38 @@ const primeFactors = {
 
   isPrime: function(num) {
 
-    return true;
+    if (num === 1) { return false }
+
+    for (var i = 2; i <= ( num - 1 ); i++) { ///
+      if ( num % i === 0 ) { return false }
+    }
+
+    return true
 
   },
 
 
   for: function(num) {
+    results = []
+    if (num === 1) { return results }
+//
+//
+// Math.pow(2, i);
+//
+//
+//
+//     results = [];
+//     for (var i = 2; i <= (num); i++) {
+//       let div = num / i
+//       if (( num % i === 0 ) && ( this.isPrime(i) )) {
+//         results.push(i)
+//         if ( this.isPrime( div) ) {
+//           results.push( div ) }
+//       }
+//     }
+  
 
-    if (num === 1) { return [] }
 
-    results = [];
-    for (var i = 2; i <= num; i++) {
-      if (( num % i === 0 ) && ( this.isPrime(i) )  ) {
-        results.push(i)
-      }
-    }
 
     return results;
   }
