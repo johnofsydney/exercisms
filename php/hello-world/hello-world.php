@@ -7,7 +7,8 @@
 
 function helloWorld()
 {
-    //
-    // YOUR CODE GOES HERE
-    //
+  //
+  // YOUR CODE GOES HERE
+  //
+  return "Hello, World!";
 }
