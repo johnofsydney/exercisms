@@ -12,12 +12,12 @@ class HammingTest < Minitest::Test
     # skip
     assert_equal 0, Hamming.compute('A', 'A')
   end
-
+  #
   def test_long_identical_strands
     # skip
     assert_equal 0, Hamming.compute('GGACTGA', 'GGACTGA')
   end
-
+  #
   def test_complete_distance_in_single_nucleotide_strands
     # skip
     assert_equal 1, Hamming.compute('A', 'G')
@@ -95,8 +95,8 @@ class HammingTest < Minitest::Test
   # If you are curious, read more about constants on RubyDoc:
   # http://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/constants.html
 
-  def test_bookkeeping
-    # skip
-    assert_equal 3, BookKeeping::VERSION
-  end
+  # def test_bookkeeping
+  #   skip
+  #   assert_equal 3, BookKeeping::VERSION
+  # end
 end
