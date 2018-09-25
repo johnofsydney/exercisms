@@ -1,18 +1,37 @@
 class Pangram
-  class << self
 
-    def pangram? phrase
-      phrase = phrase.upcase.split ""
-      alphabet = ("A".."Z").to_a
-
-      if (phrase & alphabet).length == 26
-        return true
-      end
+  def self.pangram? phrase
+    phrase = phrase.upcase.chars
+    alphabet = ("A".."Z").to_a
+    if (phrase & alphabet).length == alphabet.length
+      true
+    else
       false
-
     end
+
   end
 end
+
+module BookKeeping
+  VERSION = 6 # Where the version number matches the one in the test.
+end
+
+
+# class Pangram
+#   class << self
+#
+#     def pangram? phrase
+#       phrase = phrase.upcase.split ""
+#       alphabet = ("A".."Z").to_a
+#
+#       if (phrase & alphabet).length == 26
+#         return true
+#       end
+#       false
+#
+#     end
+#   end
+# end
 
 
 
