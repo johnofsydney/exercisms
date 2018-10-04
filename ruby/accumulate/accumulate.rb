@@ -14,3 +14,7 @@ end
 
 # a = [1,2,3,4,5]
 # p a.accumulate { |e| e * e }
+
+module BookKeeping
+  VERSION = 1 # Where the version number matches the one in the test.
+end

@@ -1,31 +1,53 @@
 require "pry"
 
 class Hamming
-  class << self
-    # def initialize
-    # end
 
-    def compute  text1, text2
-      distance = 0
-      # binding.pry
-      if text1.length == text2.length
-        one_array = text1.split ""
-        two_array = text2.split ""
+  def self.compute text1, text2
 
-        one_array.each_with_index do |letter, index|
-          if letter != two_array[index]
-            distance = distance + 1
-          end
-        end
-      else
-        raise ArgumentError
-      end
-      distance
+    if text1.length != text2.length
+      raise ArgumentError
     end
 
+    text1.chars.each_with_index.count do |letter, index|
+      letter != text2.chars[index]
+    end
 
   end
 end
+
+module BookKeeping
+  VERSION = 3 # Where the version number matches the one in the test.
+end
+
+
+
+
+# class Hamming
+#   class << self
+#     # def initialize
+#     # end
+#
+#     def compute  text1, text2
+#       distance = 0
+#       # binding.pry
+#       if text1.length == text2.length
+#         one_array = text1.split ""
+#         two_array = text2.split ""
+#
+#         one_array.each_with_index do |letter, index|
+#           if letter != two_array[index]
+#             distance = distance + 1
+#           end
+#         end
+#       else
+#         raise ArgumentError
+#       end
+#       distance
+#     end
+#
+#
+#   end
+# end
 
 # a = Hamming.new
 # p Hamming.compute "sddtext",   "smetffft"

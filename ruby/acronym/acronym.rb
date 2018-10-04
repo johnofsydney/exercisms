@@ -1,13 +1,26 @@
 class Acronym
 
   def self.abbreviate phrase
-    words = phrase.upcase.scan(/\w+/)
-    output = words.map do |word|
-      word.chars.first
-    end
-    output.join("")
+    phrase
+    .upcase
+    .scan(/\w+/)
+    .map { |word| word.chars.first }
+    .join("")
   end
 end
+
+
+
+# class Acronym
+#
+#   def self.abbreviate phrase
+#     words = phrase.upcase.scan(/\w+/)
+#     output = words.map do |word|
+#       word.chars.first
+#     end
+#     output.join("")
+#   end
+# end
 
 
 
