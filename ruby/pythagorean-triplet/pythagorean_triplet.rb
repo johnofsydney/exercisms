@@ -30,9 +30,4 @@ class Triplet
 
   end
 
-
-
-
-
-
 end

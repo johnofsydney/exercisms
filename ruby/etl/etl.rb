@@ -3,7 +3,6 @@ class ETL
     output = {}
 
     obj.each_pair do |score, letters|
-
       letters.each do |letter|
         output[letter.downcase] = score
       end
