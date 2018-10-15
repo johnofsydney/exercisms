@@ -74,7 +74,7 @@ class TranslationTest < Minitest::Test
   end
 
   def test_invalid_codons
-    # skip
+    skip
     strand = 'CARROT'
     # assert_raises(InvalidCodonError) do
     assert_raises(ArgumentError) do

@@ -21,37 +21,30 @@ class Translation
   end
 
   def self.of_rna strand
-    # list = []
-    codons = strand.scan(/.../)
     proteins = transform PROTEINS
 
-    list = codons.map do |codon|
-
-      raise ArgumentError unless proteins.keys.include? codon
-      # return if proteins[codon] == "STOP"
-      return list if proteins[codon] == "STOP"
-
-      # list.push proteins[codon]
-      proteins[codon]
-    end
-
-    # list
+    strand
+    .scan(/.../)
+    .map { |codon| proteins[codon] }
+    .take_while { |codon| codon != "STOP" }
   end
 
   def self.transform obj
-    output = {}
 
-    obj.each_pair do |score, letters|
-      letters.each do |letter|
-        output[letter.upcase] = score
+    output = {}
+    obj.each do |key, value|
+      value.each do |element|
+        output[element.upcase] = key
       end
     end
-
     output
+
   end
 
 
+
 end
+
 
 
 
