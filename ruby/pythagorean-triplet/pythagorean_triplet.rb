@@ -18,6 +18,8 @@ class Triplet
 
   def pythagorean?
     @args[0] ** 2 + @args[1] ** 2 == @args[2] ** 2
+
+
   end
 
   def self.where(options={})
@@ -31,3 +33,5 @@ class Triplet
   end
 
 end
+
+# binding.pry

@@ -22,7 +22,7 @@ class TripletTest < Minitest::Test
   end
 
   def test_triplets_upto_10
-    # skip
+    skip
     triplets = Triplet.where(max_factor: 10)
     products = triplets.map(&:product).sort
     assert_equal [60, 480], products
