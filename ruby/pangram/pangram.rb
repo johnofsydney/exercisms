@@ -3,14 +3,29 @@ class Pangram
   def self.pangram? phrase
     phrase = phrase.upcase.chars
     alphabet = ("A".."Z").to_a
-    if (phrase & alphabet).length == alphabet.length
-      true
-    else
-      false
-    end
-
+    (phrase & alphabet).length == alphabet.length
   end
 end
+
+
+
+
+
+
+
+# class Pangram
+#
+#   def self.pangram? phrase
+#     phrase = phrase.upcase.chars
+#     alphabet = ("A".."Z").to_a
+#     if (phrase & alphabet).length == alphabet.length
+#       true
+#     else
+#       false
+#     end
+#
+#   end
+# end
 
 module BookKeeping
   VERSION = 6 # Where the version number matches the one in the test.
