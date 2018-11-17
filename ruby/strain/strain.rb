@@ -4,7 +4,7 @@ class Array
 
     each do |element|
       test = yield element
-      output << element unless test == false
+      output << element if test
     end
 
     output
@@ -15,12 +15,38 @@ class Array
 
     each do |element|
       test = yield element
-      output << element unless test == true
+      output << element unless test
     end
 
     output
   end
 end
+
+
+
+# class Array
+#   def keep
+#     output = []
+#
+#     each do |element|
+#       test = yield element
+#       output << element unless test == false
+#     end
+#
+#     output
+#   end
+#
+#   def discard
+#     output = []
+#
+#     each do |element|
+#       test = yield element
+#       output << element unless test == true
+#     end
+#
+#     output
+#   end
+# end
 
 
 # class Array
