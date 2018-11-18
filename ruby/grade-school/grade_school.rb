@@ -9,9 +9,8 @@ class School
   end
 
   def add name, grade
-    @student_db <<  { :name => name, :grade => grade } 
+    @student_db << { :name => name, :grade => grade }
   end
-
 
 
   def students grade
