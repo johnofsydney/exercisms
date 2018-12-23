@@ -1,6 +1,6 @@
 require 'pry'
-# Definitiion of class SpaceAge for Exercism
-class SpaceAge
+# Definition of class SpaceAge for Exercism
+class SpaceAge < AllAges
   EARTH_YEAR_IN_SECONDS = 31_557_600
   PLANETS = {
     Earth: 1,
@@ -24,6 +24,9 @@ class SpaceAge
   end
 
   def method_missing(name, *args, &block)
+    # first time using method_missing
+    # super basically checks if the method exists in the class's ancestor
+    # (if any)
     super
     raise "'#{name}' is not a method of the class #{self.class}"
   end
