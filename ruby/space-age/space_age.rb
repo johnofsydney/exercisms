@@ -24,6 +24,7 @@ class SpaceAge
   end
 
   def method_missing(name, *args, &block)
+    super
     raise "'#{name}' is not a method of the class #{self.class}"
   end
 
@@ -32,7 +33,3 @@ class SpaceAge
     p "rubocop recommends a 'respond_to_missing?' method"
   end
 end
-
-a = SpaceAge.new(1_000_000_000)
-
-binding.pry
