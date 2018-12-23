@@ -13,21 +13,13 @@ class RunLengthEncoding
       .join('')
   end
 
-  def self.single_decode(code)
-    output = ''
-    letter = code.chars.pop
-    number = (code.chars - [letter]).join('').to_i
-    number.times { output << letter }
-    output
-  end
-
   def self.decode(input)
     return '' if input == ''
 
     input
-      .scan(/\d*\D/)
-      .map do |code|
-        code.length == 1 ? code : single_decode(code)
+      .scan(/(\d*)(\D)/)
+      .map do |number, letter|
+        number.to_i > 1 ? letter * number.to_i : letter
       end
       .join('')
   end
