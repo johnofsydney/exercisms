@@ -14,19 +14,7 @@ class Robot
   end
 
   def make_all_names
-    all_names = []
-    ('A'..'Z').to_a.each do |a|
-      ('A'..'Z').to_a.each do |b|
-        ('0'..'9').to_a.each do |c|
-          ('0'..'9').to_a.each do |d|
-            ('0'..'9').to_a.each do |e|
-              all_names << (a + b + c + d + e)
-            end
-          end
-        end
-      end
-    end
-    all_names.shuffle
+    ('AA000'..'ZZ999').to_a.shuffle
   end
 
   def reset
