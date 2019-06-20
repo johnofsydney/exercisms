@@ -33,9 +33,9 @@ class Luhn
 
     def double_every_second(arr)
       first = arr[0].to_i
-      second = arr[1].to_i
+      second = double_second arr[1].to_i
 
-      [first, (double_second second)]
+      [first, second]
     end
 
     def double_second(num)
