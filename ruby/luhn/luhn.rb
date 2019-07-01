@@ -2,7 +2,7 @@ require 'pry'
 
 # Luhn class for Exercism
 class Luhn
-  def self.valid? (number)
+  def self.valid?(number)
     @number = strip_spaces number
     return false if @number.length < 2
     return false if contains_non_digits
@@ -33,12 +33,12 @@ class Luhn
 
     def double_every_second(arr)
       first = arr[0].to_i
-      second = double_second arr[1].to_i
+      second = multiply_maybe_subtract arr[1].to_i
 
       [first, second]
     end
 
-    def double_second(num)
+    def multiply_maybe_subtract(num)
       return num * 2 if num * 2 < 10
 
       (num * 2) - 9
