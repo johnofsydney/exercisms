@@ -2,7 +2,7 @@ require 'pry'
 # comment for class
 class Palindromes
   Palindrome = Struct.new(:value, :factors)
-  attr_reader :range, :least, :most, :products, :candidates 
+  # attr_reader :range, :least, :most, :products, :candidates 
 
   def initialize(input)
     @max_factor = input.fetch(:max_factor, 1)
@@ -11,7 +11,7 @@ class Palindromes
 
   def generate
     @range = (@min_factor..@max_factor)
-    products = get_products @range
+    products = get_products @range.to_a
     candidates = (get_palindromes products).sort
     @least = candidates.first
     @most = candidates.last
@@ -34,7 +34,7 @@ class Palindromes
       .select { |n| (number % n).zero? }
       .map { |n| [n, number / n] }
       .select { |a| a.first >= @min_factor && a.last <= @max_factor}
-      .map { |a| a.sort }
+      .map(&:sort)
       .uniq
   end
 
@@ -45,8 +45,7 @@ class Palindromes
         products << x * y 
       end
     end
-    products.uniq!
-    # products
+    products.uniq
   end
 
   def get_palindromes(products)
