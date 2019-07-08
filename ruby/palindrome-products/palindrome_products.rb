@@ -1,8 +1,6 @@
 require 'pry'
 # comment for class
 class Palindromes
-  Palindrome = Struct.new(:value, :factors)
-  # attr_reader :range, :least, :most, :products, :candidates 
 
   def initialize(input)
     @max_factor = input.fetch(:max_factor, 1)
@@ -20,12 +18,12 @@ class Palindromes
 
   def largest
     factors = get_factors @most
-    Palindrome.new(@most, factors)
+    Struct.new(:value, :factors).new(@most, factors)
   end
 
   def smallest
     factors = get_factors @least
-    Palindrome.new(@least, factors)
+    Struct.new(:value, :factors).new(@least, factors)
   end
 
   def get_factors(number)
@@ -54,4 +52,3 @@ class Palindromes
     end
   end
 end
-# binding.pry

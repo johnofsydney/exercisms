@@ -41,6 +41,12 @@ class PalindromesTest < Minitest::Test
   def test_smallest_palindrome_from_triple_digit_factors
     # skip
     palindromes = Palindromes.new(max_factor: 999, min_factor: 100)
+    10.times do
+      palindromes.generate
+      smallest = palindromes.smallest
+      assert_equal 10_201, smallest.value
+      assert_equal [[101, 101]], smallest.factors
+    end
     palindromes.generate
     smallest = palindromes.smallest
     assert_equal 10_201, smallest.value
