@@ -1,49 +1,41 @@
 require 'pry'
-
-# Luhn class for Exercism
+# class comment
 class Luhn
   def self.valid?(number)
-    @number = strip_spaces number
-    return false if @number.length < 2
-    return false if contains_non_digits
+    luhn = new(number)
+    luhn.valid?
+  end
+
+  def initialize(number)
+    @digits = (strip_spaces number).chars.reverse
+  end
+
+  def valid?
+    return false if @digits.length < 2
+    return false if contains_non_digits?
 
     (checksum % 10).zero?
   end
 
-  class << self
-    private
+  def strip_spaces(str)
+    str.gsub(/\s/, '')
+  end
 
-    def checksum
-      @number
-        .chars
-        .reverse
-        .each_slice(2)
-        .map { |arr| double_every_second arr }
-        .flatten
-        .sum
-    end
+  def contains_non_digits?
+    !@digits.join.match(/\D/).nil?
+  end
 
-    def strip_spaces(str)
-      str.gsub(/\s/, '')
-    end
+  def checksum
+    @digits
+      .map(&:to_i)
+      .each_slice(2)
+      .sum { |a, b| a + double(b) }
+  end
 
-    def contains_non_digits
-      !@number.match(/\D/).nil?
-    end
+  def double(num)
+    return 0 if num.nil?
+    return num * 2 if num * 2 < 10
 
-    def double_every_second(arr)
-      first = arr[0].to_i
-      second = multiply_maybe_subtract arr[1].to_i
-
-      [first, second]
-    end
-
-    def multiply_maybe_subtract(num)
-      return num * 2 if num * 2 < 10
-
-      (num * 2) - 9
-    end
+    (num * 2) - 9
   end
 end
-
-# binding.pry
