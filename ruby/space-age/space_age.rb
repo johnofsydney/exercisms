@@ -1,6 +1,6 @@
 require 'pry'
 # Definition of class SpaceAge for Exercism
-class SpaceAge < AllAges
+class SpaceAge 
   EARTH_YEAR_IN_SECONDS = 31_557_600
   PLANETS = {
     Earth: 1,

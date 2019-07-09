@@ -1,10 +1,11 @@
+# modification of built in Array class
 class Array
 
   def accumulate
     output = []
-    each do |element|
-      a = yield element
-      output << a
+    each do |original_element|
+      element_after_operation = yield original_element
+      output << element_after_operation
     end
 
     output
