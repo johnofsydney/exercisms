@@ -1,9 +1,8 @@
 require 'pry'
-
+# comment
 class Triplet
-
-  def initialize *args
-    @args = *args
+  def initialize(*args)
+    @args = *args.flatten
   end
 
   def sum
@@ -11,27 +10,32 @@ class Triplet
   end
 
   def product
-    @args.reduce do |accumulator, element|
-      accumulator * element
-    end
+    @args.reduce(&:*)
   end
 
   def pythagorean?
-    @args[0] ** 2 + @args[1] ** 2 == @args[2] ** 2
-
-
+    @args[0]**2 + @args[1]**2 == @args[2]**2
   end
 
-  def self.where(options={})
+  class << self
+    def where(input)
+      @min_factor = input.fetch(:min_factor, 1)
+      @max_factor = input.fetch(:max_factor, 1)
+      @sum = input.fetch(:sum, nil)
 
-    max_factor = options.fetch(:max_factor, 1)
-    min_factor = options.fetch(:min_factor, 1)
+      return pythagorean_triplets unless @sum
 
-    triplets = (min_factor..max_factor).to_a.combination(3).to_a
-    .select(&:pythagorean?)
+      pythagorean_triplets.select{ |t| t.sum == @sum }
+    end
 
+    private
+
+    def pythagorean_triplets
+      (@min_factor..@max_factor)
+        .to_a
+        .combination(3)
+        .select { |arr| Triplet.new(arr).pythagorean? }
+        .map { |arr| Triplet.new(arr) }
+    end
   end
-
 end
-
-# binding.pry
