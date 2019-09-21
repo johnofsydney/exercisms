@@ -4,7 +4,7 @@ require_relative 'transpose'
 # Common test data version: 1.1.0 92bc877
 class TransposeTest < Minitest::Test
   def test_empty_string
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
 
     INPUT
@@ -17,7 +17,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_two_characters_in_a_row
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       A1
     INPUT
@@ -73,7 +73,7 @@ class TransposeTest < Minitest::Test
       g
       l
       e
-
+       
       l
       i
       n
@@ -85,7 +85,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_first_line_longer_than_second_line
-    # skip
+    skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       The fourth line.
       The fifth line.
@@ -95,13 +95,13 @@ class TransposeTest < Minitest::Test
       TT
       hh
       ee
-
+        
       ff
       oi
       uf
       rt
       th
-      h
+      h 
        l
       li
       in
@@ -124,14 +124,14 @@ class TransposeTest < Minitest::Test
       TT
       hh
       ee
-
+        
       fs
       ie
       rc
       so
       tn
        d
-      l
+      l 
       il
       ni
       en
@@ -153,14 +153,14 @@ class TransposeTest < Minitest::Test
 
     expected = <<-EXPECTED.gsub(/^ {6}/, '').strip
       TAAA
-      h
+      h   
       elll
        ooi
       lnnn
       ogge
       n e.
       glr
-      ei
+      ei 
       snl
       tei
        .n

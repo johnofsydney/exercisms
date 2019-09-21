@@ -1,23 +1,10 @@
 require 'pry'
-# a class for transposing
+# comment
 class Transpose
 
-  def self.transpose input
-    rows = make_rows input
+  def self.transpose(input)
+    return '' if input.length.zero?
 
-    a = rows.transpose.reduce("") do |acc, ele|
-      acc + ele.join + "\n"
-    end
-    .chomp
-
-    # binding.pry
-
-    a
-  end
-
-  def self.make_rows input
-    a = input.lines.map{ |e| e.chomp.split("") }
-    # binding.pry
-    a
+    input.lines.split('').reduce{ |a, p| a + "\n" + p }
   end
 end
