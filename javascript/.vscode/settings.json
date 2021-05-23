@@ -8,14 +8,13 @@
     "activityBarBadge.background": "#63699c",
     "activityBarBadge.foreground": "#e7e7e7",
     "statusBar.background": "#659760",
-    "statusBar.border": "#659760",
     "statusBar.foreground": "#15202b",
     "statusBarItem.hoverBackground": "#50784c",
     "titleBar.activeBackground": "#659760",
     "titleBar.activeForeground": "#15202b",
-    "titleBar.border": "#659760",
     "titleBar.inactiveBackground": "#65976099",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#659760"
+  "peacock.color": "#659760",
+  "editor.tabSize": 2
 }

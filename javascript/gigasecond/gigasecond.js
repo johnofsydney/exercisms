@@ -1,13 +1,17 @@
-function Gigasecond(date) {
-	this.startDate = date;
-}
+  // function Gigasecond(date) {
+  // 	this.startDate = date;
+  // }
 
-Gigasecond.prototype.date = function() {
+  // Gigasecond.prototype.date = function() {
 
-  startTime = this.startDate.getTime()
-  endDate = new Date(startTime + 1000000000000)
+  //   startTime = this.startDate.getTime()
+  //   endDate = new Date(startTime + 1000000000000)
 
-	return endDate;
-}
+  // 	return endDate;
+  // }
 
-module.exports = Gigasecond;
+  // module.exports = Gigasecond;
+
+  export class Gigasecond {
+    fuck me javascript
+  }
