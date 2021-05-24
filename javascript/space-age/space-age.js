@@ -20,3 +20,10 @@ export const age = (planet, numberSeconds) => {
 const roundToTwo = (num) => {
     return(Math.round(num * 100) / 100)
 }
+
+
+// the test file receives the code as
+// import { age } from './space-age';
+//
+// In this style it is importing a
+// { function } from a 'file'
