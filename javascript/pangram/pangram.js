@@ -1,43 +1,26 @@
-// var Pangram = function (input) {
-//     this.text = input
-// };
-
-// Pangram.prototype.isPangram = function () {
-//   if (this.text === '') {
-//     return false
-//   }
-
-
-//   alphabetString = "abcdefghijklmnopqrstuvwxyz"
-//   alphabetArray = alphabetString.split('')
-
-//   // x = true
-
-//   for (var i = 0; i < alphabetArray.length; i++) {
-//     var a = alphabetArray[i]
-//     if (this.text.toLowerCase().indexOf(a) < 0) {
-//       // x = false
-//       return false
-//     }
-//   }
-
-
-//   return true
-
-// };
-
-// module.exports = Pangram;
-
 // test suit is looking to import
 // import { isPangram } from './pangram';
 //  which looks like
 // isPangram is the function and './pangram' is the file
 
 export const isPangram = (sentence) => {
-  sentence = sentence.toUpperCase()
   if (sentence.length == 0) {return false;}
 
-  const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+  const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 
-  return (sentence == ALPHABET)
+  // make an object with keys of all the letters
+  const alphaObject = {}
+  ALPHABET.split('').forEach(letter => {
+    alphaObject[letter] = 0
+  });
+
+  // add 1 to the value of each letter present in sentence
+  const cleanedSentence = sentence.toLowerCase().replace(/\W/g,'')
+  cleanedSentence.split('').forEach(letter => {
+    alphaObject[letter] ++
+  });
+
+  // are there any letters which have a value of 0?
+  // return the inverse.
+  return !Object.values(alphaObject).includes(0);
 }
