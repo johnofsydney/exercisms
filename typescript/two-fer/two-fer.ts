@@ -2,15 +2,10 @@
  * This stub is provided to make it straightforward to get started.
  */
 
-export function twoFer(name: string = 'you'): string {
-  // ^                 ^   ^ this is called a return type; it's the type of the
-  // ^                 ^     value that is returned from this function
-  // ^                 ^
-  // ^                 parameters go here
-  // ^
-  // allows the tests to import this function and call it
-  // <-- Your code goes here. You may remove all the commentary in this file.
+export function twoFer(name = 'you'): string {
+  // define the return type
+  // parameters can be given a type, but this is not neccessary if a default value is provided
+  // 'export' allows this function out to the consuming program (test)
 
-  // Thank you for the explanation on exporting!
   return(`One for ${ name }, one for me.`);
 }
