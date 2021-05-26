@@ -31,33 +31,49 @@ You can check this yourself:
 
 ## Setup
 
-Go through the setup instructions for JavaScript to install the
- necessary dependencies:
+Go through the setup instructions for Javascript to install the necessary
+dependencies:
 
-http://exercism.io/languages/javascript/installation
+[https://exercism.io/tracks/javascript/installation](https://exercism.io/tracks/javascript/installation)
 
-## Running the test suite
+## Requirements
 
-The provided test suite uses [Jasmine](https://jasmine.github.io/).
-You can install it by opening a terminal window and running the
-following command:
+Please `cd` into exercise directory before running all below commands.
 
-```sh
-npm install -g jasmine
+Install assignment dependencies:
+
+```bash
+$ npm install
 ```
 
-Run the test suite from the exercise directory with:
+## Making the test suite pass
 
-```sh
-jasmine prime-factors.spec.js
+Execute the tests with:
+
+```bash
+$ npm test
 ```
 
-In many test suites all but the first test have been marked "pending".
-Once you get a test passing, activate the next one by changing `xit` to `it`.
+In the test suites all tests but the first have been skipped.
 
-## Source
+Once you get a test passing, you can enable the next one by changing `xtest` to
+`test`.
+
+
+## Submitting Solutions
+
+Once you have a solution ready, you can submit it using:
+
+```bash
+exercism submit prime-factors.js
+```
+
+## Submitting Incomplete Solutions
+
+It's possible to submit an incomplete solution so you can see how others have
+completed the exercise.
+
+## Exercise Source Credits
 
 The Prime Factors Kata by Uncle Bob [http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata](http://butunclebob.com/ArticleS.UncleBob.ThePrimeFactorsKata)
 
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
