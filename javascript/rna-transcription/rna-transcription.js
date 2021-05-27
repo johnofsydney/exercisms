@@ -1,34 +1,16 @@
-var DnaTranscriber = function () {
-
+const STRANDMAP = {
+  G: 'C',
+  C: 'G',
+  T: 'A',
+  A: 'U'
 }
 
+export const toRna = (sequence) => {
+  if (sequence.length < 1) { return('') };
 
-DnaTranscriber.prototype.toRna = function (input) {
+  return (sequence.split('').map(transcribe).join(''));
+}
 
-  const swapper = function (letter) {
-    switch (letter) {
-      case "G":
-        return "C";
-      case "C":
-        return "G";
-      case "T":
-        return "A";
-      case "A":
-        return "U";
-      default:
-        return "X";
-    }
-  };
-  var arr = input.split('');
-  var swappedArr = arr.map(swapper);
-  var output = swappedArr.join('');
-
-  if (output.indexOf("X") >= 0) {
-    throw new Error('Invalid input');
-  }
-
-  return output;
-
-};
-
-module.exports = DnaTranscriber;
+const transcribe = (nucleotide) => {
+  return(STRANDMAP[nucleotide]);
+}
