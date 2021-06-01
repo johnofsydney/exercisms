@@ -1,85 +1,69 @@
-var Cipher = require('./simple-cipher');
+/* eslint-disable no-new */
+import { Cipher } from './simple-cipher';
 
-describe('Random key cipher', function () {
-  var cipher = new Cipher();
+describe('Random key cipher', () => {
+  const cipher = new Cipher();
 
-  it('has a key made of letters', function () {
-    expect(cipher.key).toMatch(/^[a-z]+$/);
-
-  });
-
-  // Here we take advantage of the fact that plaintext of "aaa..."
-  // outputs the key. This is a critical problem with shift ciphers, some
-  // characters will always output the key verbatim.
-  it('can encode', function () {
+  test('can encode', () => {
+    // Here we take advantage of the fact that plaintext of "aaa..."
+    // outputs the key. This is a critical problem with shift ciphers, some
+    // characters will always output the key verbatim.
     expect(cipher.encode('aaaaaaaaaa')).toEqual(cipher.key.substr(0, 10));
   });
 
-  xit('can decode', function () {
+  xtest('can decode', () => {
     expect(cipher.decode(cipher.key.substr(0, 10))).toEqual('aaaaaaaaaa');
   });
 
-  xit('is reversible', function () {
-    var plaintext = 'abcdefghij';
+  xtest('is reversible', () => {
+    // I.e., if you apply decode in a encoded result, you must see
+    // the same plaintext encode parameter as a result of the decode method
+    const plaintext = 'abcdefghij';
     expect(cipher.decode(cipher.encode(plaintext))).toEqual(plaintext);
   });
-});
 
-describe('Incorrect key cipher', function () {
-  xit('throws an error with an all caps key', function () {
-    expect( function () {
-      new Cipher('ABCDEF');
-    }).toThrow(new Error('Bad key'));
-  });
-
-  xit('throws an error with a numeric key', function () {
-    expect( function () {
-      new Cipher('12345');
-    }).toThrow(new Error('Bad key'));
-  });
-
-  it('throws an error with an empty key', function () {
-    expect( function () {
-      new Cipher('');
-    }).toThrow(new Error('Bad key'));
+  xtest('key is made only of lowercase letters', () => {
+    expect(cipher.key).toMatch(/^[a-z]+$/);
   });
 });
 
-describe('Substitution cipher', function () {
-  var key = 'abcdefghij';
-  var cipher = new Cipher(key);
+describe('Substitution cipher', () => {
+  const key = 'abcdefghij';
+  const cipher = new Cipher(key);
 
-  it('keeps the submitted key', function () {
-    expect(cipher.key).toEqual(key);
-  });
-
-  xit('can encode', function () {
+  xtest('can encode', () => {
     expect(cipher.encode('aaaaaaaaaa')).toEqual('abcdefghij');
   });
 
-  xit('can decode', function () {
+  xtest('can decode', () => {
     expect(cipher.decode('abcdefghij')).toEqual('aaaaaaaaaa');
   });
 
-  xit('is reversible', function () {
+  xtest('is reversible', () => {
+    // I.e., if you apply decode in a encoded result, you must see
+    // the same plaintext encode parameter as a result of the decode method
     expect(cipher.decode(cipher.encode('abcdefghij'))).toEqual('abcdefghij');
   });
 
-  xit(': double shift encode', function () {
-    expect(new Cipher('iamapandabear').encode('iamapandabear'))
-      .toEqual('qayaeaagaciai');
+  xtest('can double shift encode', () => {
+    expect(new Cipher('iamapandabear').encode('iamapandabear')).toEqual(
+      'qayaeaagaciai'
+    );
   });
 
-  xit('can wrap on encode', function () {
+  xtest('can wrap on encode', () => {
     expect(cipher.encode('zzzzzzzzzz')).toEqual('zabcdefghi');
   });
 
-  xit('can wrap on decode', () => {
+  xtest('can wrap on decode', () => {
     expect(cipher.decode('zabcdefghi')).toEqual('zzzzzzzzzz');
   });
 
-  xit('can handle messages longer than the key', function () {
-    expect(new Cipher('abc').encode('iamapandabear'))
-      .toEqual('iboaqcnecbfcr');
+  xtest('can encode messages longer than the key', () => {
+    expect(new Cipher('abc').encode('iamapandabear')).toEqual('iboaqcnecbfcr');
+  });
+
+  xtest('can decode messages longer than the key', () => {
+    expect(new Cipher('abc').decode('iboaqcnecbfcr')).toEqual('iamapandabear');
   });
 });

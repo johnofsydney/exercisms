@@ -8,7 +8,7 @@ const STRANDMAP = {
 export const toRna = (sequence) => {
   if (sequence.length < 1) { return('') };
 
-  return (sequence.split('').map(transcribe).join(''));
+  return ([...sequence].map(transcribe).join(''));
 }
 
 const transcribe = (nucleotide) => {
