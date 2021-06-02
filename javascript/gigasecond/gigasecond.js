@@ -1,5 +1,5 @@
-export const gigasecond = (inputDate) => {
-  const GIGA = Math.pow(10, 12);
+const GIGA = 1e12;
 
+export const gigasecond = (inputDate) => {
   return (new Date(inputDate.getTime() + GIGA));
 }
