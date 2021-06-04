@@ -49,12 +49,8 @@ export class Cipher {
   }
 }
 
-const calculateDistance = (letter) => {
-  const indexOne = 0;
-  // const indexOne = ALPHABET.indexOf('a');
-  const indexTwo = ALPHABET.indexOf(letter);
-
-  return(indexTwo - indexOne)
+const calculateDistance = (keyLetter) => {
+  return (ALPHABET.indexOf(keyLetter));
 }
 
 const stretchKey = (text, key) => {
