@@ -1,38 +1,3 @@
-// function Cipher(key) {
-//   ALPHABET = "abcdefghijklmnopqrstuvwxyz"
-
-
-//   if ( key === '' ) {
-//     throw(Error('Bad key'))
-//   }
-
-//   this.key = key || "aaaaaaaaaa"
-
-
-
-//   this.encode = function (text) {
-//     textArray = text.split('')
-//     result = ""
-
-//     textArray.forEach( function (char, i) {
-//       indexOld = ALPHABET.indexOf(char)
-//       delta = 0
-//       indexNew = indexOld + delta
-//       result += ALPHABET[indexNew]
-//     })
-
-//     return result
-//   }
-
-//   this.decode = function (text) {
-//     return this.key
-//   }
-
-
-// }
-
-// module.exports = Cipher;
-
 const ALPHABET = "abcdefghijklmnopqrstuvwxyz".split('')
 export class Cipher {
   constructor(key) {
@@ -46,7 +11,9 @@ export class Cipher {
   encode(text) {
     const letters = [...text]
     let transformed = []
-    this.key = checkLengthOfKey(text, this.key)
+    if (this.key.length < text.length) {
+      this.key = stretchKey(text, this.key)
+    }
 
     for (let index = 0; index < letters.length; index++) {
       let letter = letters[index]
@@ -64,7 +31,9 @@ export class Cipher {
   decode(text) {
     const letters = [...text]
     let transformed = []
-    this.key = checkLengthOfKey(text, this.key)
+    if (this.key.length < text.length) {
+      this.key = stretchKey(text, this.key)
+    }
 
     for (let index = 0; index < letters.length; index++) {
       let letter = letters[index]
@@ -78,24 +47,19 @@ export class Cipher {
 
     return transformed.join('');
   }
-
-  // rotate
 }
 
 const calculateDistance = (letter) => {
-  const indexOne = ALPHABET.indexOf('a');
+  const indexOne = 0;
+  // const indexOne = ALPHABET.indexOf('a');
   const indexTwo = ALPHABET.indexOf(letter);
 
   return(indexTwo - indexOne)
 }
 
-const checkLengthOfKey = (text, key) => {
-
+const stretchKey = (text, key) => {
   while (text.length > key.length) {
-    key = key + key
+    key += key;
   }
-
-  return(key)
-
-
+  return(key);
 }
