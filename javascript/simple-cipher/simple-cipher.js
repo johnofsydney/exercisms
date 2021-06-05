@@ -9,43 +9,25 @@ export class Cipher {
   }
 
   encode(text) {
-    const letters = [...text]
-    let transformed = []
     if (this.key.length < text.length) {
       this.key = stretchKey(text, this.key)
     }
 
-    for (let index = 0; index < letters.length; index++) {
-      let letter = letters[index]
-      let currentPosition = ALPHABET.indexOf(letter)
-
-      let distance = calculateDistance(this.key[index])
-      let codedIndex = (currentPosition + distance) % 26
-
-      transformed.push(ALPHABET[codedIndex])
-    }
-
-    return transformed.join('');
+    return [...text].reduce((result, letter, index) => {
+      let newLetter = calculateLetter(letter, index, this.key, true);
+      return result + newLetter
+    }, '')
   }
 
   decode(text) {
-    const letters = [...text]
-    let transformed = []
     if (this.key.length < text.length) {
       this.key = stretchKey(text, this.key)
     }
 
-    for (let index = 0; index < letters.length; index++) {
-      let letter = letters[index]
-      let currentPosition = ALPHABET.indexOf(letter)
-
-      let distance = calculateDistance(this.key[index])
-      let codedIndex = (currentPosition - distance + 26) % 26
-
-      transformed.push(ALPHABET[codedIndex])
-    }
-
-    return transformed.join('');
+    return [...text].reduce((result, letter, index) => {
+      let newLetter = calculateLetter(letter, index, this.key, false);
+      return result + newLetter
+    }, '')
   }
 }
 
@@ -58,4 +40,18 @@ const stretchKey = (text, key) => {
     key += key;
   }
   return(key);
+}
+
+const calculateLetter =(letter, index, key, forward) => {
+  // given a letter in a string, and it's position in that string
+  // calculate a new letter by shifting that letter
+  // forward inthe alphabet for encode and backwards for decode
+  // the distance to shift is determined based on the letter of the key
+  // at the position of the original letter in the original string
+  let currentPosition = ALPHABET.indexOf(letter)
+
+  let distance = calculateDistance(key[index])
+  let codedIndex = forward ? (currentPosition + distance) % 26 : (currentPosition - distance + 26) % 26
+
+  return ALPHABET[codedIndex]
 }
