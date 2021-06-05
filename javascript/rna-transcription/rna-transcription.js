@@ -6,11 +6,11 @@ const STRANDMAP = {
 }
 
 export const toRna = (sequence) => {
-  if (sequence.length < 1) { return('') };
+  if (sequence.length < 1) { return ('') };
 
   return ([...sequence].map(transcribe).join(''));
 }
 
 const transcribe = (nucleotide) => {
-  return(STRANDMAP[nucleotide]);
+  return (STRANDMAP[nucleotide]);
 }
