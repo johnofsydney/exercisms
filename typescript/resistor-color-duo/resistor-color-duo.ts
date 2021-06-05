@@ -6,18 +6,16 @@ export class ResistorColor {
       throw(Error('At least two colors need to be present'))
     }
 
-    this.colors = colors
+    this.colors = colors.slice(0,2);
   }
   value = (): number => {
-    let colorOne = this.colors[0];
-    let colorTwo = this.colors[1];
+    // map each color value to its corresponding digit
+    // and join the digits as a single digit
+    let valueString = this.colors.reduce( (accumulator, color) => {
+      return accumulator + (COLOR_VALUES[color])
+    }, '')
 
-    let valueOne = COLOR_VALUES[colorOne];
-    let valueTwo = COLOR_VALUES[colorTwo];
-
-    let value = valueOne + valueTwo
-
-    return(parseInt(value));
+    return parseInt(valueString);
   }
 }
 
