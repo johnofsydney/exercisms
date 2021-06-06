@@ -1,33 +1,30 @@
 export class ResistorColor {
-  private colors: string[]
-
-  constructor(colors: string[]) {
+  constructor(
+    private colors: string[]
+    ) {
     if (colors.length < 2) {
       throw(Error('At least two colors need to be present'))
     }
-
-    this.colors = colors.slice(0,2);
   }
+
   value = (): number => {
-    // map each color value to its corresponding digit
-    // and join the digits as a single digit
-    let valueString = this.colors.reduce( (accumulator, color) => {
-      return accumulator + (COLOR_VALUES[color])
-    }, '')
+    let tens = RESISTOR_COLORS.indexOf(this.colors[0]);
+    let units = RESISTOR_COLORS.indexOf(this.colors[1]);
 
-    return parseInt(valueString);
+    return (tens * 10 + units)
   }
 }
 
-const COLOR_VALUES: {[id:string] : string} = {
-  black: '0',
-  brown: '1',
-  red: '2',
-  orange: '3',
-  yellow: '4',
-  green: '5',
-  blue: '6',
-  violet: '7',
-  grey: '8',
-  white: '9'
-}
+
+const RESISTOR_COLORS = [
+  'black',
+  'brown',
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'blue',
+  'violet',
+  'grey',
+  'white'
+]
