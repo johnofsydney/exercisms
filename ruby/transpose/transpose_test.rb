@@ -73,7 +73,7 @@ class TransposeTest < Minitest::Test
       g
       l
       e
-       
+
       l
       i
       n
@@ -95,13 +95,13 @@ class TransposeTest < Minitest::Test
       TT
       hh
       ee
-        
+
       ff
       oi
       uf
       rt
       th
-      h 
+      h
        l
       li
       in
@@ -124,14 +124,14 @@ class TransposeTest < Minitest::Test
       TT
       hh
       ee
-        
+
       fs
       ie
       rc
       so
       tn
        d
-      l 
+      l
       il
       ni
       en
@@ -153,14 +153,14 @@ class TransposeTest < Minitest::Test
 
     expected = <<-EXPECTED.gsub(/^ {6}/, '').strip
       TAAA
-      h   
+      h
       elll
        ooi
       lnnn
       ogge
       n e.
       glr
-      ei 
+      ei
       snl
       tei
        .n
