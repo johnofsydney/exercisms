@@ -10,7 +10,7 @@ export class Allergies {
 
   list() {
     return(
-      Object.keys(this.allergyTable)
+      this.allergyTable
     );
   }
 }
