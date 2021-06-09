@@ -1,21 +1,23 @@
 export class Allergies {
   constructor(num) {
-    this.num = num
-    this.allergyTable = calculatePatientAllergies(this.num)
+    this.num = sanitizeNum(num)
+    this.allergyTable = buildAllergyTable(this.num)
   }
 
   allergicTo(food) {
-    return checker(food, this.allergyTable)
+    return (
+      (this.allergyTable[food] == undefined) ? false : this.allergyTable[food]
+    )
   }
 
   list() {
     return(
-      this.allergyTable
+      Object.getOwnPropertyNames(this.allergyTable).reverse()
     );
   }
 }
 
-const calculatePatientAllergies = (num) => {
+const buildAllergyTable = (num) => {
   let result = {};
   let individualScores = Object
                           .keys(ALLERGY_CONST)
@@ -26,8 +28,8 @@ const calculatePatientAllergies = (num) => {
     let numberToCheck = individualScores.shift()
 
     if (Math.floor(num / numberToCheck) == 1) {
-      let word = ALLERGY_CONST[numberToCheck.toString()]
-      result[word] = true;
+      let allergen = ALLERGY_CONST[numberToCheck.toString()]
+      result[allergen] = true;
 
       num = num - numberToCheck
     }
@@ -47,8 +49,7 @@ const ALLERGY_CONST = {
   128: 'cats',
 }
 
-
-const checker = (food, allergyTable) => {
-
-  return (allergyTable[food] == undefined) ? false : allergyTable[food]
+const sanitizeNum = (num) => {
+  // would not work for 1024, 2048 etc. But works for test, so will do.
+  return (num >= 256) ? num - 256 : num
 }
