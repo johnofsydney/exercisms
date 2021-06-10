@@ -1,8 +1,19 @@
-//
-// This is only a SKELETON file for the 'Word Count' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
+export const countWords = (sentence) => {
 
-export const countWords = () => {
-  throw new Error('Remove this statement and implement this function');
+  return (
+    sentence
+      .replace(/\s'|'\s|'$|\A'/g, ' ')  // delete surrounding apostrophes
+      .replace(/[:.!&$@^%]/g, '')       // delete punctuation
+      .toLowerCase()
+      .split(/[\s,]+/)                  // split on spaces _and_ new lines
+      .filter((word) => {
+        if (word.replace(/s/g, '').length > 0) {
+          return (word)
+        }
+      })                                // remove any words containing just spaces
+      .reduce( (result, word) => {
+        result[word] ? result[word]++ : result[word] = 1
+        return(result)
+      }, {})                            // crunch it down to a single object
+  );
 };
