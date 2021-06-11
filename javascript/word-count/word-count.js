@@ -3,6 +3,7 @@ export const countWords = (sentence) => {
   return (
     sentence
       .replace(/\s'|'\s|'$|\A'/g, ' ')  // delete surrounding apostrophes
+      .trim()
       .replace(/[:.!&$@^%]/g, '')       // delete punctuation
       .toLowerCase()
       .split(/[\s,]+/)                  // split on spaces _and_ new lines
