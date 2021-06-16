@@ -4,43 +4,73 @@
 //
 
 export class ComplexNumber {
-  constructor() {
-    throw new Error('Remove this statement and implement this function');
+  constructor(realNum, imaginaryNum) {
+    this.realNum = realNum;
+    this.imaginaryNum = imaginaryNum;
   }
 
   get real() {
-    throw new Error('Remove this statement and implement this function');
+    return this.realNum
   }
 
   get imag() {
-    throw new Error('Remove this statement and implement this function');
+    return this.imaginaryNum
   }
 
-  add() {
-    throw new Error('Remove this statement and implement this function');
+  add(complexTwo) {
+    let [a, b] = [this.realNum, this.imaginaryNum];
+    let [c, d] = [complexTwo.real, complexTwo.imag];
+    const realPart = a + c;
+    const imagPart = b + d;
+
+    return( new ComplexNumber(realPart, imagPart) )
   }
 
-  sub() {
-    throw new Error('Remove this statement and implement this function');
+  sub(complexTwo) {
+    let [a, b] = [this.realNum, this.imaginaryNum];
+    let [c, d] = [complexTwo.real, complexTwo.imag];
+    const realPart = a - c;
+    const imagPart = b - d;
+
+    return( new ComplexNumber(realPart, imagPart) )
   }
 
-  div() {
-    throw new Error('Remove this statement and implement this function');
+  div(complexTwo) {
+    let [a, b] = [this.realNum, this.imaginaryNum];
+    let [c, d] = [complexTwo.real, complexTwo.imag];
+    const realPart = (a * c + b * d)/(c**2 + d**2)
+    const imagPart = (b * c - a * d)/(c**2 + d**2)
+
+    return( new ComplexNumber(realPart, imagPart) )
   }
 
-  mul() {
-    throw new Error('Remove this statement and implement this function');
+  mul(complexTwo) {
+    let [a, b] = [this.realNum, this.imaginaryNum];
+    let [c, d] = [complexTwo.real, complexTwo.imag];
+    const realPart = (a * c - b * d)
+    const imagPart = (b * c + a * d)
+
+    return( new ComplexNumber(realPart, imagPart) )
   }
 
   get abs() {
-    throw new Error('Remove this statement and implement this function');
+    let [a, b] = [this.realNum, this.imaginaryNum];
+
+    return( (a**2 + b**2)**0.5 )
   }
 
   get conj() {
-    throw new Error('Remove this statement and implement this function');
+    let [a, b] = [this.realNum, this.imaginaryNum];
+    return( new ComplexNumber(a, (b - 2 * b)) )
   }
 
   get exp() {
-    throw new Error('Remove this statement and implement this function');
+    // Raising e to a complex exponent can be expressed as `e^(a + i * b) = e^a * e^(i * b)`, the last term of which is given by Euler's formula `e^(i * b) = cos(b) + i * sin(b)`.
+    let [a, b] = [this.realNum, this.imaginaryNum];
+    let e = Math.exp(1);
+    const realPart = e**a + Math.cos(b);
+    const imagPart = Math.sin(b);
+
+    return( new ComplexNumber(realPart, imagPart) );
   }
 }
