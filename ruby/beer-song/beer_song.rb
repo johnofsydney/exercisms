@@ -1,17 +1,11 @@
+require 'pry'
 
 class BeerSong
-
   def self.recite bottles, verse
-
-    song = make_verse bottles
-
-    while (verse > 1) do
-      song = song + "\n" + make_verse(bottles - 1)
-      bottles = bottles - 1
-      verse = verse - 1
-    end
-
-    song
+    (1..verse)
+      .to_a
+      .map{ |v| make_verse(bottles + 1 - v) }
+      .join("\n")
   end
 end
 
@@ -36,7 +30,9 @@ def first_line(bottles)
 end
 
 def last_line(bottles)
-  return "Go to the store and buy some more, 99 bottles of beer on the wall.\n" if bottles.zero?
+  if bottles.zero?
+    return "Go to the store and buy some more, 99 bottles of beer on the wall.\n"
+  end
 
   "Take #{bottles > 1 ? 'one' : 'it'} down and pass it around, #{phrase(bottles - 1)} of beer on the wall.\n"
 end
