@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require_relative 'transpose'
+require 'pry'
 
 # Common test data version: 1.1.0 92bc877
 class TransposeTest < Minitest::Test
@@ -31,7 +32,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_two_characters_in_a_column
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       A
       1
@@ -45,7 +46,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_simple
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       ABC
       123
@@ -61,7 +62,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_single_line
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       Single line.
     INPUT
@@ -80,12 +81,12 @@ class TransposeTest < Minitest::Test
       e
       .
     EXPECTED
-
+# binding.pry
     assert_equal expected, Transpose.transpose(input)
   end
 
   def test_first_line_longer_than_second_line
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       The fourth line.
       The fifth line.
@@ -109,12 +110,12 @@ class TransposeTest < Minitest::Test
       e.
       .
     EXPECTED
-
+# binding.pry
     assert_equal expected, Transpose.transpose(input)
   end
 
   def test_second_line_longer_than_first_line
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       The first line.
       The second line.
@@ -138,12 +139,12 @@ class TransposeTest < Minitest::Test
       .e
        .
     EXPECTED
-
+# binding.pry
     assert_equal expected, Transpose.transpose(input)
   end
 
   def test_mixed_line_length
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       The longest line.
       A long line.
@@ -175,7 +176,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_square
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       HEART
       EMBER
@@ -196,7 +197,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_rectangle
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       FRACTURE
       OUTLINED
@@ -219,7 +220,7 @@ class TransposeTest < Minitest::Test
   end
 
   def test_triangle
-    skip
+    # skip
     input = <<-INPUT.gsub(/^ {6}/, '').strip
       T
       EE

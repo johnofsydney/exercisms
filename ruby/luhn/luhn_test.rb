@@ -7,7 +7,7 @@ class LuhnTest < Minitest::Test
     # skip
     refute Luhn.valid?("1")
   end
-  
+
 
   def test_a_single_zero_is_invalid
     # skip
@@ -84,3 +84,5 @@ class LuhnTest < Minitest::Test
     refute Luhn.valid?(":9")
   end
 end
+
+
