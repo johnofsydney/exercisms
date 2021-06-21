@@ -1,33 +1,37 @@
 class Luhn
-  def self.valid?(number_as_string)
-    luhn = new(number_as_string)
-    luhn.valid?
-  end
-
-  def initialize(number_as_string)
-    @digits = make_digits(number_as_string)
+  def self.valid?(account)
+    new(account).valid?
   end
 
   def valid?
-    return false unless @digits.length > 1
+    return false unless digits.length > 1
     return false unless valid_digits?
 
     (checksum % 10).zero?
   end
 
-  def make_digits(number_as_string)
-    number_as_string
+  private
+
+  attr_reader :account, :digits
+
+  def initialize(number_as_string)
+    @account = number_as_string
+    @digits = make_digits
+  end
+
+  def make_digits
+    account
       .delete(' ')
       .chars
       .reverse
   end
 
   def valid_digits?
-    @digits.all?(/\d/)
+    digits.all?(/\d/)
   end
 
   def checksum
-    @digits
+    digits
       .map(&:to_i)
       .each_slice(2)
       .sum { |first, second = 0| first + double(second) }
@@ -40,3 +44,13 @@ class Luhn
   end
 end
 
+
+if $PROGRAM_NAME == __FILE__
+  my_luhn = Luhn.new('123423458')
+  puts my_luhn.double(23)
+  puts my_luhn.checksum
+  puts my_luhn.valid_digits?
+  puts my_luhn.make_digits('13424')
+  puts my_luhn.make_digits('13424')
+  puts my_luhn.valid?
+end
