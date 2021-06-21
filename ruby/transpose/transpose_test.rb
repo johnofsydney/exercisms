@@ -81,7 +81,7 @@ class TransposeTest < Minitest::Test
       e
       .
     EXPECTED
-# binding.pry
+
     assert_equal expected, Transpose.transpose(input)
   end
 
@@ -110,7 +110,7 @@ class TransposeTest < Minitest::Test
       e.
       .
     EXPECTED
-# binding.pry
+
     assert_equal expected, Transpose.transpose(input)
   end
 
@@ -139,7 +139,7 @@ class TransposeTest < Minitest::Test
       .e
        .
     EXPECTED
-# binding.pry
+
     assert_equal expected, Transpose.transpose(input)
   end
 
