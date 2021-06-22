@@ -14,6 +14,10 @@ class Luhn
 
   attr_reader :account, :digits
 
+  REGEX = {
+    only_digits: /\d/
+  }
+
   def initialize(number_as_string)
     @account = number_as_string
     @digits = make_digits
@@ -27,7 +31,7 @@ class Luhn
   end
 
   def valid_digits?
-    digits.all?(/\d/)
+    digits.all?(REGEX[:only_digits])
   end
 
   def checksum
