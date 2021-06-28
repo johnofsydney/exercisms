@@ -1,7 +1,4 @@
-require 'pry'
 class SecretHandshake
-
-
   def initialize(number)
     @number = number
   end
