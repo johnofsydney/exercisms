@@ -24,6 +24,7 @@ end
 # Monkey patching Array class
 class Array
   def transpose_john
+    # confirm the shape of the nested array.
     validate
 
     # let's refer to each row as a word for now.
@@ -42,8 +43,12 @@ class Array
   end
 
   def validate
+    # confirm that each 'word' is the same length
     length = first.length
     lengths = map(&:length)
     raise RuntimeError('mismatch') unless lengths.all?(length)
+
+    # could improve this by checking that the array contains only arrays
+    # and that each of these is only one level deep.
   end
 end
