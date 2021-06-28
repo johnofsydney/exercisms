@@ -1,55 +1,29 @@
-require 'pry'
-# Secret Handshake class
 class SecretHandshake
-
-  attr_accessor(:number)
-
-  # COMMANDS = {
-  #   "jump" => 1000,
-  #   "close your eyes" => 100,
-  #   "double blink" => 10,
-  #   "wink" => 1
-  # }.freeze
-
-    COMMANDS = {
-      1000 => 'jump',             # 8
-      100 => 'close your eyes',   # 4
-      10 => 'double blink',       # 2
-      1 => 'wink'                 # 1
-    }
-
-  def initialize(number = 0)
-    if number.is_a? String
-      number = 0
-    end
-
-    if number > 16
-      @reverse = true 
-      number = number - 16
-    end
-
-
-
-
-    @number = number.to_s(2).to_i
+  def initialize(number)
+    @number = number
   end
 
   def commands
-    output = []
-    # reverse = true if @number > 16
+    return [] unless @number.is_a?(Integer)
+    
+    commands = []
 
-    COMMANDS.each do |key, value|
-      output.unshift value.to_s if @number / key == 1
-      @number = @number % key
-      # p value
+    if @number > 2 ** 4
+      reverse_it = true
+      @number = @number - 2 ** 4
     end
 
-    if @reverse
-      output.reverse
-    else
-      output
+    [3,2,1,0].each do |index|
+      if @number >= 2 ** index
+        commands.push(COMMAND_LIST[index])
+        @number = @number - 2 ** index
+      end
+
     end
 
+    commands.reverse! if reverse_it
+    commands.reverse
   end
+
+  COMMAND_LIST = ['wink', 'double blink', 'close your eyes', 'jump']
 end
-# binding.pry
