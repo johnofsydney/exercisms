@@ -155,14 +155,14 @@ describe('Complex numbers', () => {
     expect(actual).toEqual(expected);
   });
 
-  xtest('Absolute value of a purely imaginary number with negative imaginary part', () => {
+  test('Absolute value of a purely imaginary number with negative imaginary part', () => {
     const expected = 5;
     const actual = new ComplexNumber(0, -5).abs;
 
     expect(actual).toEqual(expected);
   });
 
-  xtest('Absolute value of a number with real and imaginary part', () => {
+  test('Absolute value of a number with real and imaginary part', () => {
     const expected = 5;
     const actual = new ComplexNumber(3, 4).abs;
 
@@ -214,7 +214,7 @@ describe('Complex numbers', () => {
     expect(actual.imag).toBeCloseTo(expected.imag);
   });
 
-  xtest('Exponential of a number with real and imaginary part', () => {
+  test('Exponential of a number with real and imaginary part', () => {
     const expected = new ComplexNumber(-2, 0);
     const actual = new ComplexNumber(Math.LN2, Math.PI).exp;
 
