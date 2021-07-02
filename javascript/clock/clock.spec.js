@@ -6,27 +6,27 @@ describe('Clock', () => {
       expect(new Clock(8).toString()).toEqual('08:00');
     });
 
-    test('past the hour', () => {
+    xtest('past the hour', () => {
       expect(new Clock(11, 9).toString()).toEqual('11:09');
     });
 
-    test('midnight is zero hours', () => {
+    xtest('midnight is zero hours', () => {
       expect(new Clock(24, 0).toString()).toEqual('00:00');
     });
 
-    test('hour rolls over', () => {
+    xtest('hour rolls over', () => {
       expect(new Clock(25, 0).toString()).toEqual('01:00');
     });
 
-    test('hour rolls over continuously', () => {
+    xtest('hour rolls over continuously', () => {
       expect(new Clock(100, 0).toString()).toEqual('04:00');
     });
 
-    test('sixty minutes is next hour', () => {
+    xtest('sixty minutes is next hour', () => {
       expect(new Clock(1, 60).toString()).toEqual('02:00');
     });
 
-    test('minutes roll over', () => {
+    xtest('minutes roll over', () => {
       expect(new Clock(0, 160).toString()).toEqual('02:40');
     });
 
