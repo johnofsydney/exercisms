@@ -1,23 +1,28 @@
+// export a class with constructor
 export class ComplexNumber {
   constructor(realNumber, imaginaryNumber) {
     this.realNumber = realNumber;
     this.imaginaryNumber = imaginaryNumber;
   }
 
+  // getter. call from external like a public method
   get real() {
     return this.realNumber
   }
 
+  // getter. call from external like a public method
   get imag() {
     return this.imaginaryNumber
   }
 
+  // public method
   add(complexTwo) {
     let [a, b] = [this.realNumber, this.imaginaryNumber];
     let [c, d] = [complexTwo.real, complexTwo.imag];
     const realPart = a + c;
     const imagPart = b + d;
 
+    // instantiate a new instance from within the class
     return( new ComplexNumber(realPart, imagPart) )
   }
 

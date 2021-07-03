@@ -1,15 +1,18 @@
+// export a class with constructor and plublic methods
 export class Allergies {
   constructor(num) {
     this.num = sanitizeNum(num)
     this.allergyTable = buildAllergyTable(this.num)
   }
 
+  // public method with argument
   allergicTo(food) {
     return (
       (this.allergyTable[food] == undefined) ? false : this.allergyTable[food]
     )
   }
 
+  // public method without argument
   list() {
     return(
       Object.getOwnPropertyNames(this.allergyTable).reverse()
@@ -17,6 +20,8 @@ export class Allergies {
   }
 }
 
+// plain old functions outside the class
+// like a private method?
 const buildAllergyTable = (num) => {
   let result = {};
   let individualScores = Object

@@ -40,6 +40,8 @@ class Clock
     hour += minute / 60
 
     # hours roll over to zero every 24 hours
+    # ruby mod handles the rolling over
+    # -1 % 24 = 23
     hour % 24
   end
 end

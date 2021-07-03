@@ -25,6 +25,7 @@ export class Squares {
   }
 }
 
+// like a privste method
 const makeArray = (num) => {
   let arr = [...Array(num + 1).keys()] // [0, 1, 2, ... num]
   arr.shift(); // remove first entry, zero.

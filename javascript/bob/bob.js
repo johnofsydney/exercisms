@@ -1,3 +1,4 @@
+// exporting a single function
 export const hey = (statement) => {
   let answer = ''
 
