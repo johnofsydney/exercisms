@@ -6,11 +6,5 @@ export const square = (number) => {
 };
 
 export const total = () => {
-  let sum = BigInt(0);
-
-  for (let index = 1; index <= 64; index++) {
-    sum += square(index)
-  }
-
-  return sum;
+  return( BigInt(2** 64) - BigInt(1)) // trick!
 };
