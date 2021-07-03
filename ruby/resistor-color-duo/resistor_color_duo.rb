@@ -1,9 +1,9 @@
 class ResistorColorDuo
   def self.value(colors)
-    colors[0..1]
+    colors
+      .first(2)
       .map(&:capitalize)
       .map { |c| COLOR_MAP.index(c) }
-      .map(&:to_s)
       .join
       .to_i
   end

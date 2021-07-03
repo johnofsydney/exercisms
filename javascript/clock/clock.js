@@ -1,61 +1,27 @@
-// //
-// // This is only a SKELETON file for the 'Clock' exercise. It's been provided as a
-// // convenience to get you started writing code faster.
-// //
-
-// export class Clock {
-//   constructor() {
-//     // A JS Class has a constructor ( == initialize)
-//     throw new Error('Remove this statement and implement this function');
-//   }
-
-//   toString() {
-//     // instance methods. Don't need to be declared
-//     throw new Error('Remove this statement and implement this function');
-//   }
-
-//   plus() {
-//     throw new Error('Remove this statement and implement this function');
-//   }
-
-//   minus() {
-//     throw new Error('Remove this statement and implement this function');
-//   }
-
-//   equals() {
-//     throw new Error('Remove this statement and implement this function');
-//   }
-// }
-
-
 export class Clock {
-  constructor(hours, minutes = 0) {
-    this.totalMinutes = calculateTotalMinutes(hours, minutes)
-    this.hoursAsString = hoursAsString(this.totalMinutes);
-    this.minutesAsString = minutesAsString(this.totalMinutes);
+  constructor(hours = 0, minutes = 0) {
+    const d = new Date()
+    d.setHours(hours)
+    d.setMinutes(minutes)
+
+    this.hours = d.getHours(hours);
+    this.minutes = d.getMinutes(minutes);
   }
 
   toString() {
-    return(`${this.hoursAsString}:${this.minutesAsString}`);
+    const hours = this.hours.toString().padStart(2, '0')
+    const minutes = this.minutes.toString().padStart(2, '0')
+
+    return (`${hours}:${minutes}`);
   }
-}
 
-const hoursAsString = (totalMinutes) => {
-  let hours = ~~(totalMinutes / 60) // integer -x .. +x
-  let rolledHours = hours % 24 // rolls forward
+  plus(minutes) {
+    return(new Clock(this.hours, this.minutes + minutes))
+  }
 
-  return(String(rolledHours).padStart(2, '0'));
-}
+  // alternative way to define public instance method
+  // also implicit one line return, no braces
+  minus = (minutes) => this.plus(-minutes)
 
-const minutesAsString = (totalMinutes) => {
-
-  return(('0' + (totalMinutes % 60)).slice(-2));
-}
-
-
-
-const calculateTotalMinutes = (hours, minutes) => {
-  let modHours = hours % 24 // -23.. +23
-  let rolledHours = (modHours + 24) % 24 // 0 .. 23
-  return(minutes + rolledHours * 60);
+  equals = (clock) => this.toString() == clock.toString()
 }

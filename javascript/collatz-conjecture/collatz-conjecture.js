@@ -1,3 +1,4 @@
+// export a simple function
 export const steps = (num) => {
   if (num < 1) {
     throw new Error('Only positive numbers are allowed')
