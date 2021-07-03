@@ -1,88 +1,10 @@
-const Raindrops = function() {
+export const convert = (number) => {
 
+  let result = ''
 
-    this.convert = function(num) {
-      result = "";
+  if (number % 3 == 0) {result += 'Pling'}
+  if (number % 5 == 0) {result += 'Plang'}
+  if (number % 7 == 0) {result += 'Plong'}
 
-      // if (num % 3 === 0) {
-      //   result = result + "Pling";
-      // }
-      // if (num % 5 === 0) {
-      //   result = result + "Plang";
-      // }
-      // if (num % 7 === 0) {
-      //   result = result + "Plong";
-      // }
-      //
-      // if (( num % 3 !== 0 ) && ( num % 5 !== 0) && (num %7 !== 0)) {
-      //   result = num.toString();
-      // }
-
-      result = "Pling";
-
-      if ( num % 5 === 0 ) {
-        result = "Plang"
-      }
-
-      return result;
-    };
-}
-
-module.exports = Raindrops
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function Raindrops() {
-//
-//
-//   this.convert = function(num) {
-//     result = "";
-//
-//     if (num % 3 === 0) {
-//       result = result + "Pling";
-//     }
-//     if (num % 5 === 0) {
-//       result = result + "Plang";
-//     }
-//     if (num % 7 === 0) {
-//       result = result + "Plong";
-//     }
-//
-//     if (( num % 3 !== 0 ) && ( num % 5 !== 0) && (num %7 !== 0)) {
-//       result = num.toString();
-//     }
-//
-//     return result;
-//   };
-// }
-//
-//
-// module.exports = Raindrops;
+  return result || number.toString()
+};
