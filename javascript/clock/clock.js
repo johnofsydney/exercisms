@@ -1,7 +1,11 @@
 export class Clock {
   constructor(hours = 0, minutes = 0) {
-    this.minutes = calculateMinutes(minutes)
-    this.hours = calculateHours(hours, minutes)
+    const d = new Date()
+    d.setHours(hours)
+    d.setMinutes(minutes)
+
+    this.hours = d.getHours(hours);
+    this.minutes = d.getMinutes(minutes);
   }
 
   toString() {
@@ -12,42 +16,12 @@ export class Clock {
   }
 
   plus(minutes) {
-    minutes = this.minutes + minutes
-
-    return(new Clock(this.hours, minutes))
+    return(new Clock(this.hours, this.minutes + minutes))
   }
 
-  minus(minutes) {
-    minutes = this.minutes - minutes
+  // alternative way to define public instance method
+  // also implicit one line return, no braces
+  minus = (minutes) => this.plus(-minutes)
 
-    return (new Clock(this.hours, minutes))
-  }
-
-  equals(clock) {
-    return (this.toString() == clock.toString())
-  }
-}
-
-const calculateMinutes = (minutes) => {
-  // ruby mod does the rolling over for you
-  // JS seems more logical and will give a negative answer for a negative argument
-  // Hence this wee rolling routine
-  while (minutes < 0) {
-    minutes += 60
-  }
-
-  return (minutes % 60)
-}
-
-const calculateHours = (hours, minutes) => {
-  // JS version of integer division
-  hours += Math.floor(minutes / 60)
-
-
-  while (hours < 0) {
-    hours += 24
-  }
-
-  // -1 % 24 = -1
-  return (hours % 24)
+  equals = (clock) => this.toString() == clock.toString()
 }
