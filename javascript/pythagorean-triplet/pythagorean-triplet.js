@@ -4,15 +4,45 @@
 //
 
 export function triplets({ minFactor, maxFactor, sum }) {
-  throw new Error('Remove this statement and implement this function');
+  // let minFactor = 1
+  // let maxFactor = sum - 2
+
+  let range = []
+  for (let i = minFactor; i <= maxFactor; i++) {
+    range.push(i)
+  }
+  console.log(range)
+
+  // generate rtipleets from range
+  let combinations = []
+  for (let i = 0; i < range.length -2; i++) {
+    for (let j = i + 1; j < range.length -1; j++) {
+      for (let k = j + 1; k < range.length; k++) {
+        combinations.push( [range[i], range[j], range[k]])
+      }
+    }
+  }
+  console.log(combinations)
 }
 
 class Triplet {
   constructor(a, b, c) {
-    throw new Error('Remove this statement and implement this function');
+    this.numbers = [a, b, c]
+  }
+
+  sum = () => {
+    return this
+            .numbers
+            .reduce( (acc, element) => {return(acc + element)}, 0)
+  }
+
+  pythagorean = () => {
+    return (
+      this.numbers[0]**2 + this.numbers[1]**2 == this.numbers[2]**2
+      )
   }
 
   get toArray() {
-    throw new Error('Remove this statement and implement this function');
+    return this.numbers
   }
 }
